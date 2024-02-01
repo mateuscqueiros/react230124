@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+body {
+  margin: 0;
+  margin: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 2px solid red;
+  gap: 10px;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.child {
+  width: 100%;
+  height: 200px;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li:first-child {
+  background-color: red;
+}
+
+.wrapper > ul:last-child {
+  border-color: green;
+}
