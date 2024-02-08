@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulários</title>
+    <link rel="stylesheet" href="assets/css/form.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Formulários</h1>
+    </header>
+    <section>
+      <form action="form.php" method="post">
+        <label for="nome"
+          >Nome:
+          <input type="text" name="nome" id="nome" value="Mateus" />
+        </label>
+
+        <label for="email"
+          >Email:
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="seu@email.com"
+          />
+        </label>
+
+        <label for="senha"
+          >Senha:
+          <input type="password" name="senha" id="senha" />
+        </label>
+        <input
+          type="hidden"
+          id="temptoken"
+          value="3423423rewrewrerwerr23424423"
+        />
+        <label for="birth_date">
+          Data de nascimento
+          <input type="date" name="birth_date" id="birth_date" />
+        </label>
+
+        <label for="country">
+          País
+          <select id="country" name="country">
+            <option value="brazil">Brasil</option>
+            <option value="england">Inglaterra</option>
+            <option value="argentina">Argentina</option>
+          </select>
+        </label>
+        <label for="car">
+          Carro
+          <select id="car" name="car">
+            <option value="Volvo">Volvo</option>
+            <option value="Fiat">Fiat</option>
+            <option value="Ferrari">Ferrari</option>
+          </select>
+        </label>
+        <label for="age">
+          Idade
+          <input name="age" type="range" min="0" max="120" value="25" />
+        </label>
+        <label for="credit_card_type">
+          Cartão de crédito
+          <label for="mastercard">
+            <input
+              name="credit_card_type"
+              value="mastercard"
+              type="radio"
+              id="mastercard"
+              checked
+            />
+            Mastercard
+          </label>
+          <label for="visa">
+            <input
+              name="credit_card_type"
+              value="visa"
+              type="radio"
+              id="visa"
+            />
+            Visa
+          </label>
+        </label>
+        <label for="notes">
+          Notas do usuário
+          <textarea name="notes" id="notes"></textarea>
+        </label>
+        <label for="phone_number">
+          Telefone
+          <input type="tel" />
+        </label>
+
+        <button type="submit">Enviar</button>
+
+        <br />
+      </form>
+    </section>
+
+    <script src="/assets/js/form.js"></script>
+  </body>
+</html>
