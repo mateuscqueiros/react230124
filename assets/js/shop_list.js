@@ -1,10 +1,10 @@
 /*
-  shop_list = array com os itens
+  shopList = array com os itens
   isEditing = boolean, verificar na hora de salvar o item
 
   item = { id: number, name: string }
 */
-var shop_list = [];
+var shopList = [];
 var isEditing = false;
 var globalId = 0;
 
@@ -15,7 +15,6 @@ var shopListContainer = document.querySelector(".items-list");
 addButton.addEventListener("click", () => {
   addItem(addInput.value);
   renderAllItems();
-  addEvents();
 });
 
 function addItem(name) {
@@ -26,19 +25,22 @@ function addItem(name) {
   };
   globalId += 1;
 
-  shop_list = [...shop_list, item];
+  shopList = [...shopList, item];
 }
 
 function removeItem(idToRemove) {
-  shop_list = shop_list.filter((list_item) => list_item.id !== idToRemove);
+  // Filtrando todos os itens que não tenham o id do item a ser removido
+  shopList = shopList.filter((listItem) => listItem.id !== Number(idToRemove));
 }
 
 function addEvents() {
+  // Selecionar todos os elementos com classe .delete
   var deleteButtons = document.querySelectorAll(".delete");
+  // Percorrer o array de elementos
   deleteButtons.forEach((deleteItemButton) => {
+    // Adicionar o evento para cada item
     deleteItemButton.addEventListener("click", () => {
       const itemToDelete = deleteItemButton.dataset.id;
-      console.log(itemToDelete);
       removeItem(itemToDelete);
       renderAllItems();
     });
@@ -49,8 +51,9 @@ function renderAllItems() {
   // Zerar os itens na tela
   shopListContainer.innerHTML = "";
   // Renderizar todos os itens na tela
-  shop_list.forEach((list_item) => {
-    renderItem(list_item);
+  shopList.forEach((listItem) => {
+    renderItem(listItem);
+    addEvents();
   });
 }
 
