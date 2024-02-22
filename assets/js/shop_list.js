@@ -38,13 +38,34 @@ function addEvents() {
   var deleteButtons = document.querySelectorAll(".delete");
   // Percorrer o array de elementos
   deleteButtons.forEach((deleteItemButton) => {
-    // Adicionar o evento para cada item
+    // Adicionar o evento de delete
     deleteItemButton.addEventListener("click", () => {
       const itemToDelete = deleteItemButton.dataset.id;
       removeItem(itemToDelete);
       renderAllItems();
     });
   });
+
+  // Selecionar todos os elementos com classe .edit
+  var editButtons = document.querySelectorAll(".edit");
+  // Percorrer o array de elementos
+  editButtons.forEach((editItemButton) => {
+    // Adicionar o evento de edição
+    editItemButton.addEventListener("click", () => {
+      const itemToEdit = editItemButton.dataset.id;
+      startEditAction(itemToEdit);
+    });
+  });
+}
+
+function startEditAction(id) {
+  const itemName = document.querySelector(`[id='${id}'] .item-name`);
+  const itemInput = document.querySelector(`[id='${id}'] .edit-item-input`);
+  const itemActions = document.querySelector(`[id='${id}'] .item-actions`);
+
+  itemName.classList.add("hidden");
+  itemInput.classList.remove("hidden");
+  itemActions.classList.add("hidden");
 }
 
 function renderAllItems() {
@@ -53,8 +74,8 @@ function renderAllItems() {
   // Renderizar todos os itens na tela
   shopList.forEach((listItem) => {
     renderItem(listItem);
-    addEvents();
   });
+  addEvents();
 }
 
 function renderItem(item) {
@@ -65,7 +86,10 @@ function renderItem(item) {
 
   // Adicionando conteúdo
   var itemContent = `
-    ${item.name}
+    <div>
+      <span class="item-name">${item.name}</span>
+      <input type="text" class="edit-item-input hidden" />
+    </div>
     <div class="item-actions">
       <img
         class="icon edit"
